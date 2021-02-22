@@ -100,7 +100,7 @@ namespace lcd {
     //% block="Lösche LCD"
     export function clear() {
         init();
-        serialTransfer("Tx0y0");
+        serialTransfer("Tx0y0:");
         let lcdText = "Bx0y0w320h240c";
         lcdText = lcdText + backColor;        // fill with current background-color
         serialTransfer(lcdText);
