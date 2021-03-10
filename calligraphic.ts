@@ -313,8 +313,4 @@ namespace lcd {
         serialTransfer(lcdText);
     }
 
-    //% block
-    export function getVersion (){
-        serialTransfer("Z");
-    }
 }
