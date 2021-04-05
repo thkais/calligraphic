@@ -135,6 +135,20 @@ namespace lcd {
         serialTransfer(lcdText);
     }
 
+    //% block="Gib Zahl $zahl aus. Zeilenende $lf"
+    //% lf.shadow="toggleOnOff"
+    export function printNum(zahl: number, lf: boolean){
+        init();
+        let lcdText = "Tc";
+        lcdText = lcdText + frontColor;
+        lcdText = lcdText + "f" + fontSize;
+        lcdText = lcdText + ":" + zahl;
+        if (lf == true)
+            lcdText = lcdText + "\r";
+        lcdText = lcdText;
+        serialTransfer(lcdText);
+    }
+
     // the LCD uses a 16-Bit Value for Colors
     // red: 5, green: 6, blue: 5 bits
     function calcColor (color: number): number{
