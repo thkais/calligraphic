@@ -1,4 +1,4 @@
-
+// 0.0.6
 enum lcdFonts
 {
     //% block="normal"
@@ -106,7 +106,7 @@ namespace lcd {
         serialTransfer(lcdText);
     }
 
-    //% block="Gib $text an Position $xCoord , $yCoord aus"
+    //% block="Gib $text an Position X$xCoord , Y$yCoord aus"
     //% inlineInputMode=inline
     //% advanced=true
     export function printAt(xCoord: number, yCoord: number, text: string) {
@@ -117,8 +117,21 @@ namespace lcd {
         lcdText = lcdText + "c" + frontColor;
         lcdText = lcdText + "f" + fontSize;
         lcdText = lcdText + ":" + text;
+        serialTransfer(lcdText);       
+    }
+
+    //% block="Gib Zahl $zahl an Position X$xCoord , Y$yCoord aus"
+    //% inlineInputMode=inline
+    //% advanced=true
+    export function printAtNum(xCoord: number, yCoord: number, zahl: number) {
+        init();
+        let lcdText = "Tx";
+        lcdText = lcdText + Math.trunc(xCoord);
+        lcdText = lcdText + "y" + Math.trunc(yCoord);
+        lcdText = lcdText + "c" + frontColor;
+        lcdText = lcdText + "f" + fontSize;
+        lcdText = lcdText + ":" + zahl;
         serialTransfer(lcdText);
-       
     }
 
     //% block="Gib $text aus. Zeilenende $lf"
@@ -129,9 +142,9 @@ namespace lcd {
         lcdText = lcdText + frontColor;
         lcdText = lcdText + "f" + fontSize;
         lcdText = lcdText + ":" + text;
-        if (lf == true)
+        if (lf == true){
             lcdText = lcdText + "\r";
-        lcdText = lcdText;
+        }
         serialTransfer(lcdText);
     }
 
@@ -143,9 +156,9 @@ namespace lcd {
         lcdText = lcdText + frontColor;
         lcdText = lcdText + "f" + fontSize;
         lcdText = lcdText + ":" + zahl;
-        if (lf == true)
+        if (lf == true){
             lcdText = lcdText + "\r";
-        lcdText = lcdText;
+        }
         serialTransfer(lcdText);
     }
 
