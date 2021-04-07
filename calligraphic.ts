@@ -1,5 +1,5 @@
-// 0.0.6
-enum lcdFonts
+// 0.0.7
+enum LcdFonts
 {
     //% block="normal"
     normal,
@@ -10,6 +10,25 @@ enum lcdFonts
     //% block="sehr groß"
     veryBig
 };
+
+enum LcdPixel {
+    //% block="1x1"
+    Pix11,
+    //% block="2x2"
+    Pix22,
+    //% block="3x3"
+    Pix33,
+    //% block="4x4"
+    Pix44,
+    //% block="2x1"
+    Pix21,
+    //% block="1x2"
+    Pix12,
+    //% block="4x1"
+    Pix41,
+    //% block="1x4"
+    Pix14
+}
 
 
 //% weight=44 color=#198CD0 icon="\uf108" block="Calli:Graphic"
@@ -172,19 +191,19 @@ namespace lcd {
         return color;
     }
 
-    function calcFont (font: lcdFonts): number{
+    function calcFont (font: LcdFonts): number{
         let result: number;
         switch(font){
-            case lcdFonts.small:
+            case LcdFonts.small:
             result = 0;
             break;
-            case lcdFonts.normal:
+            case LcdFonts.normal:
             result = 1;
             break;
-            case lcdFonts.big:
+            case LcdFonts.big:
             result = 2;
             break;
-            case lcdFonts.veryBig:
+            case LcdFonts.veryBig:
             result = 3;
             break;
         }
@@ -204,8 +223,33 @@ namespace lcd {
     }
 
     //% block="Pixelgröße $size"
-    export function pixel(size: number){
-        pixelSize = Math.trunc(size);
+    export function pixel(size: LcdPixel){
+        switch(size){
+            case LcdPixel.Pix11:
+            pixelSize = 0;
+            break;
+            case LcdPixel.Pix12:
+            pixelSize = 12;
+            break;
+            case LcdPixel.Pix14:
+            pixelSize = 14;
+            break;
+            case LcdPixel.Pix21:
+            pixelSize = 21;
+            break;
+            case LcdPixel.Pix22:
+            pixelSize = 22;
+            break;
+            case LcdPixel.Pix33:
+            pixelSize = 33;
+            break;
+            case LcdPixel.Pix41:
+            pixelSize = 41;
+            break;
+            case LcdPixel.Pix44:
+            pixelSize = 44;
+            break;
+        }
     }
 
     //% block="Farbe $color"
@@ -215,7 +259,7 @@ namespace lcd {
     }
 
     //% block="Zeichengröße $size"
-    export function font(size : lcdFonts){
+    export function font(size : LcdFonts){
         fontSize = calcFont(size);
     }
 
