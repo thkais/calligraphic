@@ -1,4 +1,4 @@
-// 0.0.8
+// 0.0.9
 enum LcdFonts
 {
     //% block="normal"
@@ -281,6 +281,7 @@ namespace lcd {
     //% block="Punkt an X$xCoord Y$yCoord"
     //% inlineInputMode=inline
     export function plot(xCoord: number, yCoord: number){
+        init();
         let lcdText = "Px";
         lcdText = lcdText + Math.trunc(xCoord);
         lcdText = lcdText + "y" + Math.trunc(yCoord);
@@ -292,6 +293,7 @@ namespace lcd {
     //% block="Linie von X$xStart Y$yStart nach X$xEnd Y$yEnd"
     //% inlineInputMode=inline
     export function line(xStart: number, yStart: number, xEnd: number, yEnd: number){
+        init();
         let lcdText = "Lx";
         lcdText = lcdText + Math.trunc(xStart);
         lcdText = lcdText + "y" + Math.trunc(yStart);
@@ -304,6 +306,7 @@ namespace lcd {
 
     //% block="Line zu X$xCoord Y$yCoord"
     export function draw(xCoord: number, yCoord: number){
+        init();
         let lcdText = "Dx";
         lcdText = lcdText + Math.trunc(xCoord);
         lcdText = lcdText + "y" + Math.trunc(yCoord);
@@ -315,6 +318,7 @@ namespace lcd {
     //% block="Rechteck an X$xCoord Y$yCoord Größe $width x $height"
     //% inlineInputMode=inline
     export function box(xCoord: number, yCoord: number, width: number, height: number) {
+        init();
         let lcdText = "Bx";
         lcdText = lcdText + Math.trunc(xCoord);
         lcdText = lcdText + "y" + Math.trunc(yCoord);
@@ -328,6 +332,7 @@ namespace lcd {
     //% advanced = true
     //% weight=310
     export function circle(xCoord: number, yCoord: number, radius: number){
+        init();
         let lcdText = "Cx";
         lcdText = lcdText + Math.trunc(xCoord);
         lcdText = lcdText + "y" + Math.trunc(yCoord);
@@ -341,6 +346,7 @@ namespace lcd {
     //% advanced = true
     //% weight=300
     export function fullCircle(xCoord: number, yCoord: number, radius: number){
+        init();
         let lcdText = "Fx";
         lcdText = lcdText + Math.trunc(xCoord);
         lcdText = lcdText + "y" + Math.trunc(yCoord);
@@ -355,6 +361,7 @@ namespace lcd {
     //% advanced=true
     //% weight=110
     export function button(id: number, xCoord: number, yCoord: number, width: number, height: number) {
+        init();
         let lcdText = "Sn"
         box(xCoord, yCoord, width, height);
         lcdText = lcdText + id;
