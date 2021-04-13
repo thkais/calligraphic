@@ -1,4 +1,4 @@
-// 0.0.7
+// 0.0.8
 enum LcdFonts
 {
     //% block="normal"
@@ -93,6 +93,7 @@ namespace lcd {
     
     //% block="Touch-Feld"
     //% advanced=true
+    //% weight=200
     export function touch(): number {
         serialTransfer("R");
         return touchSwitch;
@@ -128,6 +129,7 @@ namespace lcd {
     //% block="Gib $text an Position X$xCoord , Y$yCoord aus"
     //% inlineInputMode=inline
     //% advanced=true
+    //% weight=410
     export function printAt(xCoord: number, yCoord: number, text: string) {
         init();
         let lcdText = "Tx";
@@ -142,6 +144,7 @@ namespace lcd {
     //% block="Gib Zahl $zahl an Position X$xCoord , Y$yCoord aus"
     //% inlineInputMode=inline
     //% advanced=true
+    //% weight=400
     export function printAtNum(xCoord: number, yCoord: number, zahl: number) {
         init();
         let lcdText = "Tx";
@@ -268,6 +271,7 @@ namespace lcd {
     //% green.min=0 green.max=255
     //% blue.min=0 blue.max=255
     //% advanced=true
+    //% weight=500
     // Returns a 24-Bit color-code
     export function calculateColor(red: number, green: number, blue: number): number {
         let color = ((red & 0xff)<<16)|((green & 0xFF)<<8)|(blue & 0xFF);
@@ -322,6 +326,7 @@ namespace lcd {
 
     //% block="Zeichne Kreis an X$xCoord Y$yCoord Radius$radius"
     //% advanced = true
+    //% weight=310
     export function circle(xCoord: number, yCoord: number, radius: number){
         let lcdText = "Cx";
         lcdText = lcdText + Math.trunc(xCoord);
@@ -334,6 +339,7 @@ namespace lcd {
 
     //% block="Zeichne gefüllten Kreis an X$xCoord Y$yCoord Radius$radius"
     //% advanced = true
+    //% weight=300
     export function fullCircle(xCoord: number, yCoord: number, radius: number){
         let lcdText = "Fx";
         lcdText = lcdText + Math.trunc(xCoord);
@@ -347,6 +353,7 @@ namespace lcd {
     //% block="Touch-Feld Nr. $id an X$xCoord Y$yCoord Größe $width x $height"
     //% inlineInputMode=inline
     //% advanced=true
+    //% weight=110
     export function button(id: number, xCoord: number, yCoord: number, width: number, height: number) {
         let lcdText = "Sn"
         box(xCoord, yCoord, width, height);
@@ -361,6 +368,7 @@ namespace lcd {
     //% block="Schiebe Bereich X$xCoord Y$yCoord $width x $height um $pixel Pixel nach links"
     //% inlineInputMode=inline
     //% advanced=true
+    //% weight=100
     export function shiftArea(xCoord: number, yCoord: number, width: number, height: number, pixel: number){
         let lcdText = "Hx"
         lcdText = lcdText + Math.trunc(xCoord);
@@ -374,6 +382,7 @@ namespace lcd {
     //% block="Schiebe Bereich X$xCoord Y$yCoord $width x $height um $pixel Pixel nach oben"
     //% inlineInputMode=inline
     //% advanced=true
+    //% weight=110
     export function shiftAreaUp(xCoord: number, yCoord: number, width: number, height: number, pixel: number){
         let lcdText = "Vx"
         lcdText = lcdText + Math.trunc(xCoord);
